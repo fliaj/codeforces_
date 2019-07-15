@@ -8,7 +8,6 @@ int main(){
 	int p[1000];
 	cin>>T;
 	for (int i=0; i<T; i++){
-		memset(a, 0, sizeof(a));
 		memset(dp, 20, sizeof(dp));
 		memset(dp2, 20, sizeof(dp2));
 		cin>>N>>K;

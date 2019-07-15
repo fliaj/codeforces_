@@ -1,52 +1,23 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-	int t, r, c, K;
-	int v[300][300], maxlen[300][300];
-	cin>>t;
-	for (int i=0; i<t; i++){
-		cin>>r>>c>>K;
-		for (int ii=0;ii<r;ii++)
-			for (int jj=0;jj<c;jj++){
-				cin>>v[ii][jj];
-			}
+	int cas, n;
+	int sec[105], en[105], lo[105], dp[105][10005];
+	cin>>cas;
+	for (int t=1; t<=cas; t++){
+		memset(dp, 0, sizeof(dp));
+		cin>>n;
+		for (int i=1; i<=n; i++) cin>>sec[i]>>en[i]>>lo[i];
 
-		for (int i=0; i<r; i++){
-			for (int j=0; j<c-1; j++){
-				int Min=v[i][j], Max=v[i][j];
-				int k;
-				for (k=j+1; k<c; k++){
-					Max = max(Max, v[i][k]);
-					Min = min(Min, v[i][k]);
-					if (Max - Min > K){
-						k = k-1;
-						break;
-					}
-				}
-				if (k>=c) k--;
-				maxlen[i][j] = k-j;
-				// cout<<k-j<<' ';
+		for (int i=1;i<=n;i++){
+			
+			for (int j=1;j<=10000;j++){// time
+				dp[i][j] = max(dp[i][j-1], dp[i-1][j]);
+				if (j)
 			}
-			// cout<<endl;
 		}
-
-		int ans = r;
-		for (int j=0;j<c-1;j++)
-			for (int len=1;len<c-j;len++){
-				int continuous = 0;
-				for (int i=0; i<r; i++){
-					if (maxlen[i][j]>=len) continuous++; else{
-						
-						ans = max(ans, continuous*(len+1));
-						continuous = 0;
-						// cout<<continuous<<len<<endl;
-					}
-				}
-				ans = max(ans, continuous*(len+1));
-			}
-		cout<<"Case #"<<(i+1)<<": "<<ans<<endl;
+		cout<<"Case #"<<t<<": "<<ans<<endl;
 	}
 	
 	

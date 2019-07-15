@@ -6,7 +6,7 @@ int main(){
 	int N, Q;
 	string str;
 	cin>>cas;
-	int sum[26][10001];
+	int sum[26][100001];
 	for (int t=1; t<=cas; t++){
 		memset(sum, 0, sizeof(sum));
 		cin>>N>>Q;
