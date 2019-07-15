@@ -14,10 +14,12 @@ int main(){
 			
 			for (int j=1;j<=10000;j++){// time
 				dp[i][j] = max(dp[i][j-1], dp[i-1][j]);
-				if (j)
+				if (j>=sec[i]){
+					dp[i][j] = max(dp[i][j], dp[i-1][j-sec[i]]+max(0, en[i]-lo[i]*(j-sec[i])) );
+				}
 			}
 		}
-		cout<<"Case #"<<t<<": "<<ans<<endl;
+		cout<<"Case #"<<t<<": "<<dp[n][10000]<<endl;
 	}
 	
 	
