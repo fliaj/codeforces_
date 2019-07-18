@@ -9,7 +9,16 @@ int main(){
 		memset(dp, 0, sizeof(dp));
 		cin>>n;
 		for (int i=1; i<=n; i++) cin>>sec[i]>>en[i]>>lo[i];
-
+		for (int i=1; i<n; i++){
+			for (int j=i+1;j<=n;j++){
+				if (lo[j]==0) continue;
+				if (lo[i]==0 || (sec[i]/(double)lo[i])>(sec[j]/(double)lo[j])) {
+					swap(lo[i], lo[j]);
+					swap(sec[i], sec[j]);
+					swap(en[i], en[j]);
+				}
+			}
+		}
 		for (int i=1;i<=n;i++){
 			
 			for (int j=1;j<=10000;j++){// time
