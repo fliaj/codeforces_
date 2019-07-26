@@ -3,45 +3,7 @@ using namespace std;
 const int maxnode = 100001;
 
 int _sum, _min, _max, op, qL, qR, v;
-/*struct SegmentTree{
-	int sumv[maxnode], minv[maxnode], maxv[maxnode], addv[maxnode];
-	void maintain(int o, int L, int R){
-		int lc = o*2, rc = o*2 + 1;
-		sumv[o] = minv[o] = maxv[o] = 0;
-		if (R>L){
-			sumv[o] = sumv[lc] + sumv[rc];
-			minv[o] = min(minv[lc], minv[rc]);
-			maxv[o] = max(maxv[lc], maxv[rc]);
-		}
-		if (addv[o]) {
-			minv[o] += addv[o];
-			maxv[o] += addv[o];
-			sumv[o] += addv[o] * (R-L+1);
-		}
-	}
-	void update(int o, int L, int R){
-		int lc = o*2, rc = o*2+1;
-		if (qL <= L && qR >= R){
-			addv[o] +=v;
-		} else{
-			int M = L + (R-L)/2;
-			if (qL <= M) update(lc, L, M);
-			if (qR > M) update(rc, M+1, R);
-		}
-		maintain(o, L, R);
-	}
-	void query(int o, int L, int R, int add){
-		if (qL<=L && qR>=R){
-			_sum += sumv[o] + add* (R-L+1);
-			_min = min(_min, minv[o]+add);
-			_max = max(_max, maxv[o]+add);
-		} else{
-			int M = L + (R-L)/2;
-			if (qL<=M) query(o*2, L, M, add+addv[o]);
-			if (qR> M) query(o*2+1, M=1, R, add+addv[o]);
-		}
-	}
-};*/
+
 struct SegmentTree {
   int sumv[maxnode], minv[maxnode], maxv[maxnode], addv[maxnode];
   void clear(){
